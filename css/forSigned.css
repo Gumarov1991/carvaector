@@ -1,0 +1,9 @@
+.hide-for-signed {
+    display: none !important;
+}
+
+section.first {
+    height: 500px;
+    background: #000000 url(../carvector-bootstrap/img/carvectorTopBannerSignedBG.jpg) no-repeat;
+    background-position-y: center;
+}

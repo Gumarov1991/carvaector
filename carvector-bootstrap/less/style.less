@@ -1,0 +1,563 @@
+@font-face {
+    font-family: 'Roboto_bold';
+    src: url('../fonts/Roboto-Bold.eot');
+    src: url('../fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Roboto-Bold.woff2') format('woff2'),
+        url('../fonts/Roboto-Bold.woff') format('woff'),
+        url('../fonts/Roboto-Bold.ttf') format('truetype'),
+        url('../fonts/Roboto-Bold.svg#Roboto-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto_reg';
+    src: url('../fonts/Roboto-Regular.eot');
+    src: url('../fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Roboto-Regular.woff2') format('woff2'),
+        url('../fonts/Roboto-Regular.woff') format('woff'),
+        url('../fonts/Roboto-Regular.ttf') format('truetype'),
+        url('../fonts/Roboto-Regular.svg#Roboto-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto_medium';
+    src: url('../fonts/Roboto-Medium.eot');
+    src: url('../fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Roboto-Medium.woff2') format('woff2'),
+        url('../fonts/Roboto-Medium.woff') format('woff'),
+        url('../fonts/Roboto-Medium.ttf') format('truetype'),
+        url('../fonts/Roboto-Medium.svg#Roboto-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+.rb() {
+    font-family: 'Roboto_bold', sans-serif; 
+}
+
+.rg() {
+    font-family: 'Roboto_reg', 'Roboto', sans-serif;
+}
+
+.rm() {
+    font-family: 'Roboto_medium', sans-serif;
+}
+
+html {
+    font-size: 1rem;
+}
+a, a:hover {
+    text-decoration: none;
+}
+button, input, a {
+    &:focus{
+        outline: none;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+section {
+    padding: 45px 0;
+}
+h1 {
+    .rb();
+    font-size: 32px;
+    color: @light;
+}
+
+/* Bases colors */
+@btn-color: #43b100;
+@light: #fff;
+@text-color: #434343;
+@danger: #ff0000;
+
+
+.main {
+    a {
+        .rg();
+        color: @text-color;
+        line-height: 60px;
+        display: inline-block;
+    }
+    i {
+        padding-right: 10px;
+    }
+    &-btn {
+    line-height: 2rem;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    }
+}
+
+.button {
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 20px;
+    border-radius: 50px;
+    border: none;
+    background: @btn-color;
+}
+.button1 {
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 20px;
+    border-radius: 50px;
+    border: none;
+    background: @text-color;
+}
+
+.button2 {
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #434343;
+    padding: 0 10px;
+    background: @light;
+}
+
+
+.menu {
+    background-color: @text-color;
+    height: 70px;
+        ul {
+            padding-left: 0;
+            display: flex;
+            justify-content: space-between;
+                li {
+                    display: inline-block;
+                    list-style-type: none;
+                        a {
+                            color: @light;
+                            line-height: 70px;
+                            }
+                    }
+            }
+        }
+
+.first {
+
+    background: #000 url(../img/first-bg.png) no-repeat;
+    background-size: cover;
+      height: 600px;
+width: 100%;
+    p {
+        font-size: 18px;
+        font-weight: 300;
+        color: @light;
+        padding-bottom: 30px;
+    }
+    h2 {
+        font-size: 24px;
+        .rg();
+        color: @light;
+        padding-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    .button-new {
+        display: inline-block;
+        margin-top: 15px;
+        a {
+                display: inline-block;
+                border-radius: 50px;
+                background: @btn-color;
+                line-height: 36px;
+                margin-right: 20px;
+                padding: 5px 40px;
+                .rm();
+                font-size: 16px;
+                color: #FFF;
+                text-align: center;
+        }
+    }
+
+    .button-new1 {
+        display: inline-block;
+        margin-top: 15px;
+        a {
+            display: inline-block;
+            border-radius: 50px;
+            line-height: 36px;
+            border: 1px solid @light;
+            background: transparent;
+            padding: 5px 40px;
+            .rm();
+            font-size: 16px;
+            color: #FFF;
+            text-align: center;
+        }
+    }
+
+    &-form {
+        padding: 1rem 2rem;
+        background: rgba(225, 255, 255, 40%);
+        &-header {
+            font-size: 24px;
+            .rg();
+            }
+        &-select {
+            display: block;
+            margin: 0 0 10px 0;
+            width: 100%;
+            padding: 10px;
+        }
+        select {
+            color: #949494;
+        }
+        &-select-min {
+            display: inline-block;
+            width: 49%;
+            margin: 0 0 15px 0;
+            padding: 10px;
+        }
+        &-btn {
+                border-radius: 50px;
+                background: @btn-color;
+                line-height: 36px;
+                padding: 5px 50px;
+                margin-left: 24%;
+                .rm();
+                font-size: 16px;
+                color: #FFF;
+                text-align: center;
+                border: none;
+                }
+        }
+}
+    
+
+    .first-relative {
+         position: relative;
+    }
+
+.instruction {
+        background: url(../img/Instruction.png) center center no-repeat;
+        background-size: contain;
+    position: absolute;
+    width: 645px;
+    height: 319px;
+    bottom: 0;
+        top: 236px;
+    left: 64px;
+    }
+
+    .danger {
+        width: 120px;
+        height: 55px;
+        background-color: @danger;
+        position: relative;
+        h2 {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            color: @light;
+            .rg();
+            font-size: 24px;
+        }
+    }
+        
+
+    .goto a {
+        display: block;
+        text-align: right;
+        color: @danger;
+        .rg();
+        font-size: 16px;
+        margin: 5% 0 0 40%;
+    }
+
+    .offers {
+        margin-bottom: 50px;
+    }
+    .offers-blocks {
+        transition: ease-in-out 0.5s;
+        margin-top: 50px;
+        padding: 5px 15px;
+        -webkit-box-shadow: 0px 10px 10px 0px rgba(225, 225, 225, 0.45);
+        -moz-box-shadow:    0px 10px 10px 0px rgba(225, 225, 225, 0.45);
+        box-shadow:         0px 10px 10px 0px rgba(225, 225, 225, 0.45);
+        h3 {
+            .rm();
+            font-size: 19px;
+        }
+        p {
+            color: #3c3c3c;
+            font-size: 14px;
+            .rg();
+        }
+        h2 {
+            .rb();
+            font-size: 16px;
+            color: @danger;
+        }
+        &:hover {
+             -webkit-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+            transform: scale(1.2);
+            transition: ease-in-out 0.5s;
+        }
+    }
+
+    .car-by-makes {
+        background-color: #faf9f9;
+    }
+    .search-car-by-makes {
+        margin-top: -75px;
+        width: 230px;
+        height: 55px;
+        background-color: @btn-color;
+        position: relative;
+    }
+    .search-car-by-makes-h2 h2 {
+            .rg();
+            font-size: 24px;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            color: @light;
+        }
+.car-logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    text-align: center;
+}
+.car-logo-img {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 30px;
+}
+.car-logo-img img {
+    width: -webkit-fill-available;
+    background-size: contain;
+}
+
+.mers {
+    background: url(../img/cars/mers.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.bmw {
+    background: url(../img/cars/bmw.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.audi {
+    background: url(../img/cars/audi.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.porsh {
+    background: url(../img/cars/porsh.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.toyota {
+    background: url(../img/cars/toyota.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.mazda {
+    background: url(../img/cars/mazda.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.nissan {
+    background: url(../img/cars/nissan.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.honda {
+    background: url(../img/cars/Honda.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.subaru {
+    background: url(../img/cars/Subaru.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.mitsubishi {
+    background: url(../img/cars/Mitsubishi.png) no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.card-logo-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.car-logo-1 a {
+    text-decoration: underline;
+    color: #000;
+    .rg();
+    font-size: 14px;
+    text-align: center;
+}
+
+.voice-blocks {
+    margin-top: 50px;
+    border: 1px solid rgba(225,225,225,0.45);
+    padding: 30px 25px;
+    text-align: center;
+    p {
+        .rg();
+        font-size: 16px;
+    }
+}
+
+.voice h3 {
+    margin: 30px 0;
+    color: @btn-color;
+}
+
+.voice {
+    position: relative;
+}
+.foot {
+    position: absolute;
+    bottom: 0;
+    right: 20%;
+
+}
+
+.footer {
+    padding: 30px 0;
+    background-color: #3c3c3c;
+    h3 {
+        color: @light;
+        font-size: 18px;
+        .rg();
+        padding-bottom: 10px;
+    }
+}
+
+.footer-1 img {
+    display: block;
+    padding-bottom: 10px;
+}
+.footer-1 p {
+    font-size: 12px;
+    .rg();
+    color: @light;
+}
+.footer-1_1 {
+    margin-left: 25px;
+}
+.footer-1_2 {
+    margin-left: 50px;
+}
+
+.footer-info {
+    padding-bottom: 5px;
+    a {
+    color: @light;
+    }
+    i {
+        padding-right: 5px;
+    }
+}
+.footer-ws {
+    padding-bottom: 5px;
+    a {
+    color: @light;
+    }
+    i {
+        padding-right: 5px;
+    }
+}
+.footer-phone {
+    padding-bottom: 5px;
+    a {
+    color: @light;
+    }
+    i {
+        padding-right: 5px;
+    }
+}
+
+.victor {
+    padding-bottom: 5px;
+    a {
+    color: @light;
+    }
+    i {
+        padding-right: 5px;
+    }
+}
+
+.darya {
+    padding-bottom: 5px;
+    a {
+    color: @light;
+    }
+    i {
+        padding-right: 5px;
+    }
+}
+
+.christine {
+    padding-bottom: 5px;
+    a {
+    color: @light;
+    }
+    i {
+        padding-right: 5px;
+    }
+}
+
+.social {
+    a {
+        font-size: 30px;
+        color: @light;
+    }
+    i {
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .button { 
+        padding: 0 10px;
+        margin-right:2px;
+     }
+    .main-info a {
+        font-size: 14px;
+    }
+    .goto a {
+        font-size: 15px;
+    }
+    .foot {
+        right: 5%;
+    }
+    .instruction {
+    width: 645px;
+    height: 319px;
+    bottom: 0;
+       top: 296px;
+    left: 64px;
+    }
+    .first {
+
+        background: url(../img/first-bg.png) center no-repeat;
+    background-size: cover;
+    height: 650px;
+    width: 100%;
+}
+}

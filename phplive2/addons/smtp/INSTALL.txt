@@ -1,0 +1,23 @@
+PHP Live! SMTP Addon
+=======================================================
+(c) OSI Codes Inc.
+
+This addon includes the SwiftMailer libraries to process the SMTP request. For more information about SwiftMailer, please visit swiftmailer.org
+
+Installation:
+
+1. Verify that your PHP Live! system is v.4.3 or greater.  The PHP Live! version number is located on the login screen of your PHP Live! system (top right or footer).
+
+2. Download the SMTP addon from the client area:
+
+http://www.phplivesupport.com/r.php?r=login
+
+3. Unzip the SMTP addon file that contains the "smtp" folder.
+
+4. Open an FTP connection to your web server and access the "phplive/" directory.
+
+5. Upload the entire "smtp" folder to the "phplive/addons/" directory.  Once uploaded, there should now be a "phplive/addons/smtp/" directory containing the SMTP addon files.
+
+6. Access your PHP Live! setup area and click the top menu "Extras".  You should now see the "SMTP" sub menu on the "Extras" page.
+
+7. Enter the SMTP values, verify the settings and done!

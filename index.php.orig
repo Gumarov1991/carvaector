@@ -1,0 +1,104 @@
+<?php
+header('Content-type: text/html; charset=UTF-8');
+require 'smarty/libs/Smarty.class.php';
+$smarty = new Smarty;
+$smarty->compile_check = true;
+$smarty->debugging = false;
+$smarty->error_reporting = E_ALL & ~E_NOTICE;
+
+require("./scripts_admin/db_config.php");
+
+$c_ip = client_ip();
+$ip = explode (".", $c_ip); 
+if ($ip) $ip = $ip[0]*256*256*256+$ip[1]*256*256+$ip[2]*256+$ip[3]; else $ip=0;
+$date = date("Y-m-d");
+$res = mysql_query("SELECT id FROM cv_suser_visitors WHERE date ='$date'") or error();
+if (mysql_num_rows($res) == 0) { 
+	mysql_query("TRUNCATE TABLE cv_suser_ips"); 
+	mysql_query("INSERT INTO cv_suser_ips SET ip='$ip'"); 
+	mysql_query("INSERT INTO cv_suser_visitors SET date='$date', visitors=1"); 
+} else { 
+	$current_ip = mysql_query("SELECT id FROM cv_suser_ips WHERE ip='$ip'"); 
+	if (mysql_num_rows($current_ip) == 0) { 
+		mysql_query("INSERT INTO cv_suser_ips SET ip='$ip'"); 
+		mysql_query("UPDATE cv_suser_visitors SET visitors=visitors+1 WHERE `date`='$date'"); 
+	}
+}
+
+if (isset($_GET['language'])) {
+        $lang_id = int_cip($_GET['language']);
+		$result = mysql_query("SELECT * FROM cv_language WHERE id = $lang_id and active = 1") or error();
+		if (!mysql_fetch_array($result)) $lang_id = 2;
+        $_SESSION['language_id'] = $lang_id;
+} else if (isset($_SESSION['language_id'])) {
+		$lang_id = $_SESSION['language_id'];
+		$result = mysql_query("SELECT * FROM cv_language WHERE id = $lang_id and active = 1") or error();
+		if (!mysql_fetch_array($result)) $lang_id = 2;
+        $_SESSION['language_id'] = $lang_id;
+} else {
+		$result = mysql_query("SELECT * FROM cv_iptable WHERE ip_from <= $ip and ip_to >= $ip") or error();
+		if ($rows = mysql_fetch_array($result)) $lang_id = $rows["language_id"]; else $lang_id = 2;
+		$result = mysql_query("SELECT * FROM cv_language WHERE id = $lang_id and active = 1") or error();
+		if (!mysql_fetch_array($result)) $lang_id = 2;
+		$_SESSION['language_id'] = $lang_id;
+}
+$smarty->assign("lang_id", $lang_id);
+
+if (isset($_GET['quit'])) {
+        mysql_query("UPDATE cv_customers SET session_id = '' WHERE id = '{$_SESSION['login_user_id']}'") or error();
+        $_SESSION['login_user'] = "";$_SESSION['login_user_id'] = "";$_SESSION['counter'] = "0";
+}
+set_content(array("2-10",12,15,16,261,320,321,322,"364-372",380,381,387,"390-392","399-401",408));
+
+
+
+$result = mysql_query("SELECT * FROM cv_language WHERE active = 1 OR id = '$lang_id'") or error();
+while ($rows = mysql_fetch_array($result)) $smarty->append("languages", $rows);
+
+if (isset($_GET['hotpr'])) $part = "hotpr"; else
+if (isset($_GET['response'])) $part = "response"; else
+if (isset($_GET['about'])) $part = "about"; else
+if (isset($_GET['service'])) $part = "service"; else
+if (isset($_GET['faq'])) $part = "faq"; else
+if (isset($_GET['contact'])) $part = "contact"; else
+if (isset($_GET['catalog'])) $part = "catalog"; else
+if (isset($_GET['search_3'])) $part = "search_3"; else
+if (isset($_GET['calc'])) $part = "calc"; else
+if (isset($_GET['registr'])) $part = "registr"; else
+if (isset($_GET['forbidden_pass'])) $part = "forbidden_pass"; else
+if (isset($_GET['login'])) $part = "login"; else
+if (isset($_GET['account'])) $part = "account"; else
+if (isset($_GET['my'])) $part = "user_my"; else
+if (isset($_GET['zak'])) $part = "user_zak"; else
+if (isset($_GET['bal'])) $part = "user_bal"; else
+if (isset($_GET['resp'])) $part = "user_resp"; else
+if (isset($_GET['subscr'])) $part = "subscribe"; else
+if (isset($_GET['newpass'])) $part = "user_newpass"; else
+if (isset($_GET['direct'])) $part = "direct"; else
+if (isset($_GET['instr_2'])) $part = "instr_2"; else
+if (isset($_GET['instr_1'])) $part = "instr_1"; else
+if (isset($_GET['auchouses'])) $part = "auchouses"; else
+if (isset($_GET['myear'])) $part = "myear"; else
+if (isset($_GET['gradsys'])) $part = "gradsys"; else
+if (isset($_GET['term'])) $part = "term"; else
+$part = "main";
+
+if (strpos(" ;account;user_my;user_zak;user_bal;user_resp;user_newpass;direct;instr_2;instr_1;auchouses;myear;gradsys;term;", ";".$part.";")) {
+        if (!isset($_SESSION['login_user']) || empty($_SESSION['login_user'])) {
+                $smarty->assign("url", "./index.php?login");
+                $smarty->display('exec_command.tpl');
+                exit;
+        }
+}
+
+require "scripts/".$part.".php";
+
+$smarty->assign(array(  "part" => $part,
+                        "login_user" => isset($_SESSION['login_user'])?$_SESSION['login_user']:"",
+                        "login_user_id" => isset($_SESSION['login_user_id'])?$_SESSION['login_user_id']:"",
+                ));
+
+$smarty->display('index.tpl');
+
+
+?>

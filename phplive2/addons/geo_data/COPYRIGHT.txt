@@ -1,0 +1,9 @@
+Database and Contents Copyright (c) 2012 MaxMind Inc
+
+This database is confidential and proprietary to MaxMind Inc and may not be
+reproduced, published or disclosed to others without MaxMind authorization.
+
+OSI Codes Inc. has purchased the redistribution license of the GeoCity Lite database
+so our clients can benefit from the vast possibilities of the GeoIP capabilities.
+The GeoIP data is for your company use and from the PHP Live! system.
+
